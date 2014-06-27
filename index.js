@@ -13,25 +13,25 @@ module.exports = function () {
         this.emit("error", new PluginError("gulp-trycatch-closure",  "Streaming not supported"));
       } else {
         file = f;
+        var newFile;
+
+        newFile = new File({
+          cwd: file.cwd,
+          base: file.base,
+          path: file.path,
+          contents: Buffer.concat([
+            new Buffer(";try {" + gutil.linefeed),
+            file.contents,
+            new Buffer(gutil.linefeed + "} catch(e) { console.warn(e); };")
+          ])
+        });
+
+        this.emit("data", newFile);
       }
     }
   }
 
   function end () {
-    var newFile;
-
-    newFile = new File({
-      cwd: file.cwd,
-      base: file.base,
-      path: file.path,
-      contents: Buffer.concat([
-        new Buffer(";try {" + gutil.linefeed),
-        file.contents,
-        new Buffer(gutil.linefeed + "} catch(e) { console.warn(e); };")
-      ])
-    });
-
-    this.emit("data", newFile);
     this.emit("end");
   }
 
