@@ -27,7 +27,7 @@ module.exports = function () {
       contents: Buffer.concat([
         new Buffer(";try {" + gutil.linefeed),
         file.contents,
-        new Buffer(gutil.linefeed + "catch(e) { console.warn(e); };")
+        new Buffer(gutil.linefeed + "} catch(e) { console.warn(e); };")
       ])
     });
 
