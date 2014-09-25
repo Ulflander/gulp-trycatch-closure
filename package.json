@@ -1,7 +1,7 @@
 {
   "name": "gulp-trycatch-closure",
   "description": "Enclose the content with a try...catch statement",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/Ulflander/gulp-trycatch-closure",
   "repository": {
     "type": "git",

@@ -33,6 +33,7 @@ gulp.task('build', function() {
 
 ## Usage with gulp-if
 
+```
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     ifif = require('gulp-if'),
